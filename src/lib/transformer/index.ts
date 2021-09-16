@@ -2,8 +2,8 @@ import sharp = require('sharp');
 
 export interface TransformationOptions {
   resize?: {
-    width: number;
-    height: number;
+    width?: number;
+    height?: number;
     options?: sharp.ResizeOptions;
   };
 }

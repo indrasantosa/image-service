@@ -59,11 +59,14 @@ export class Media {
   }
 
   toJSON() {
-    console.log(this);
+    const mimeParts = this.mimeType.split('/');
+    const imageType = mimeParts[1];
+
+    const { internalFilePath, ...rest } = this;
     return {
-      ...this,
-      url: `http://localhost:3000/v1/pig/${this.name}`,
-      thumbnailUrl: `http://localhost:3000/v1/pig/tr:thumbnail/${this.name}`
+      ...rest,
+      url: `http://localhost:3000/v1/pig/tr/%7B%7D/${this.id}.${imageType}`,
+      thumbnailUrl: `http://localhost:3000/v1/pig/tr/%7B%22height%22:200%7D/${this.id}.${imageType}`
     };
   }
 }
