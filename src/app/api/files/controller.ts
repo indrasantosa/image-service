@@ -1,10 +1,13 @@
 import { Context } from 'koa';
 import { getManager } from 'typeorm';
-import imageSize from 'image-size';
 
 import { Media } from '../../../entity/Media';
 
 export default {
+  /**
+   * List uploaded image
+   * @param ctx
+   */
   index: async (ctx: Context) => {
     const mediaRepository = getManager().getRepository(Media);
 
@@ -12,6 +15,11 @@ export default {
 
     ctx.body = allMedia;
   },
+
+  /**
+   * Upload image into the storage
+   * @param ctx
+   */
   upload: async (ctx: Context) => {
     const { request } = ctx;
     const mediaRepository = getManager().getRepository(Media);

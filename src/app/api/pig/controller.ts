@@ -12,6 +12,10 @@ import {
 } from '../../../lib/transformer';
 
 export default {
+  /**
+   * Transform image from stored image
+   * @param ctx
+   */
   transform: async (ctx: Context) => {
     const { transformString, fileName } = ctx.params;
     const filePath = path.parse(fileName);
@@ -32,6 +36,11 @@ export default {
     ctx.response.set('content-type', `image/${imageOutputType}`);
     ctx.body = mediaStream.pipe(tranformPipeline);
   },
+
+  /**
+   * Transform image from a remote URL
+   * @param ctx
+   */
   remote: async (ctx: Context) => {
     const { sourceFile, transformString, fileName } = ctx.params;
     const filePath = path.parse(fileName);
@@ -54,9 +63,14 @@ export default {
     ctx.response.set('content-type', `image/${imageOutputType}`);
     ctx.body = image.data.pipe(tranformPipeline);
   },
+
+  /**
+   * Transform image from uploaded image
+   * @param ctx
+   */
   upload: async (ctx: Context) => {
     const { request } = ctx;
-    const { sourceFile, transformString, fileName } = ctx.params;
+    const { transformString, fileName } = ctx.params;
     const filePath = path.parse(fileName);
     const requestedExtension = filePath.ext.slice(1, filePath.ext.length);
     const imageOutputType = getValidImageExt(requestedExtension);
