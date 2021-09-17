@@ -66,13 +66,14 @@ export function createTransformPipeline(
  * @param {string} fileExt - intended image format
  * @returns {ImageOutputType}
  */
-export function getValidImageExt(fileExt: string) {
+export function getValidImageExt(fileExt: string = '') {
   const validExt = [
     ImageOutputType.JPEG,
     ImageOutputType.PNG,
     ImageOutputType.WEBP
   ];
-  return validExt.indexOf(fileExt as ImageOutputType) > -1
-    ? (fileExt as ImageOutputType)
+  const normalizedExt = fileExt.toLowerCase();
+  return validExt.indexOf(normalizedExt as ImageOutputType) > -1
+    ? (normalizedExt as ImageOutputType)
     : ImageOutputType.JPEG;
 }
