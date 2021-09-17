@@ -66,7 +66,7 @@ export class Media {
     return {
       ...rest,
       url: `http://localhost:3000/v1/pig/tr/%7B%7D/${this.id}.${imageType}`,
-      thumbnailUrl: `http://localhost:3000/v1/pig/tr/%7B%22height%22:200%7D/${this.id}.${imageType}`
+      thumbnailUrl: `http://localhost:3000/v1/pig/tr/%7B%22resize%22:%7B%22height%22:200,%22width%22:200%7D%7D/${this.id}.${imageType}`
     };
   }
 }
