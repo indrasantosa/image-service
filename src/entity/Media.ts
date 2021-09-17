@@ -4,7 +4,6 @@ import {
   Column,
   PrimaryColumn,
   Generated,
-  Timestamp,
   BeforeInsert,
   BeforeUpdate,
   Index
