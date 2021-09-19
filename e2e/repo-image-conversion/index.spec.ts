@@ -1,6 +1,5 @@
 import * as request from 'supertest';
 import * as fs from 'fs';
-import * as pixelmatch from 'pixelmatch';
 import * as looksSame from 'looks-same';
 
 const API_URL = 'http://localhost:3000';
@@ -51,7 +50,9 @@ describe('/v1/tr/:transformString/:fileName', () => {
     );
     expect(response.status).toBe(200);
 
-    const refImage = fs.readFileSync(`${__dirname}/doge_sample_converted.png`);
+    const refImage = fs.readFileSync(
+      `${__dirname}/doge_sample_converted_resized.png`
+    );
 
     looksSame(response.body, refImage, (error, { equal }) => {
       expect(equal).toBe(true);
