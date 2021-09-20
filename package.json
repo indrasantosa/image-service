@@ -10,7 +10,9 @@
     "start": "ts-node dist/index.js",
     "dev": "nodemon --watch 'src/**/*' -e ts,tsx --exec ts-node ./src/index.ts",
     "docker:build:dev": " docker build -f Dockerfile.dev .",
-    "docker:build": " docker build ."
+    "docker:build": " docker build .",
+    "docker:dev:start": "docker-compose up -d",
+    "docker:dev:stop": "docker-compose down"
   },
   "author": "",
   "license": "ISC",
